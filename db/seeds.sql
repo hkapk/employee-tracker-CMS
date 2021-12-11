@@ -1,10 +1,9 @@
-INSERT INTO departments (department_name, id)
+INSERT INTO departments (name)
 VALUES
-(Organics),
-(Inorganics),
-(Volatiles),
-(Semi-volatiles),
-(Project Management);
+('Sales'),
+('Accounting'),
+('IT'),
+('Management');
 
 
 
