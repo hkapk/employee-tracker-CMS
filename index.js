@@ -97,7 +97,7 @@ function addDept () {
     const sql = `INSERT INTO departments (name) VALUES ("${dept}")`;
     db.query(sql, function (err,res) {
         if (err) throw err;
-        //console.table(res);
+        console.table("Department Added");
         init();
     });
 
@@ -106,7 +106,8 @@ function addDept () {
 
 //function to add a role
 function addRole () {
-    inquirer.prompt([{
+    inquirer.prompt([
+    {
         type: "input",
         message: "Enter the name of the role you want to add",
         name:"title"
@@ -130,14 +131,56 @@ function addRole () {
     const sql = `INSERT INTO roles (title, salary, department_id) VALUES ("${title}", "${salary}", "${department_id}")`;
     db.query(sql, function (err,res) {
         if (err) throw err;
-        //console.table(res);
+        console.table("Role Added");
         init();
     });
 
 });
 }
 
-init();
 
+//function to add an employee
+function addEmployee () {
+    inquirer.prompt([
+    {
+        type: "input",
+        message: "What is the first name of the employee?",
+        name:"first_name"
+    },
+    {
+        type:"input",
+        message:"What is the last name of the employee?",
+        name:"last_name"
+    },
+    {
+        type:"input",
+        message:"What is the role id for the employee?",
+        name:"role_id"
+    },
+    {
+        type:"input",
+        message:"What is the manager ID (enter 'NULL' if no manager)",
+        name:"manager_id"
+    }
+])
+    .then(function(input) {
+        const first_name = input.first_name;
+        const last_name = input.last_name;
+        const role_id = input.role_id;
+        const manager_id = input.manager_id;
+
+        const sql = `INSERT INTO employees (first_name, last_name, role_id, manager_id) 
+        VALUES ("${first_name}","${last_name}", "${role_id}", "${manager_id}");`
+        db.query(sql, function (err,res) {
+            if (err) throw err;
+            console.table("Employee Added");
+            init();
+        });
+    
+    });
+    }
+
+
+init();
 
 
