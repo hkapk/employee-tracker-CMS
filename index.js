@@ -86,11 +86,10 @@ function viewEmployees () {
 }
 
 //function to add a department
-
 function addDept () {
     inquirer.prompt({
         type: "Input",
-        message: "Enter the name of the department",
+        message: "Enter the name of the department you want to add",
         name:"dept"
     })
     .then(function(input){
@@ -98,7 +97,40 @@ function addDept () {
     const sql = `INSERT INTO departments (name) VALUES ("${dept}")`;
     db.query(sql, function (err,res) {
         if (err) throw err;
-        console.table(res);
+        //console.table(res);
+        init();
+    });
+
+});
+}
+
+//function to add a role
+function addRole () {
+    inquirer.prompt([{
+        type: "input",
+        message: "Enter the name of the role you want to add",
+        name:"title"
+    },
+    {
+        type:"input",
+        message:"What is the salary for the role?",
+        name:"salary"
+    },
+    {
+        type:"input",
+        message:"What is the department ID for the position?",
+        name:"department_id"
+    }
+])
+    
+    .then(function(input){
+    const title = input.title;
+    const salary = input.salary;
+    const department_id = input.department_id;
+    const sql = `INSERT INTO roles (title, salary, department_id) VALUES ("${title}", "${salary}", "${department_id}")`;
+    db.query(sql, function (err,res) {
+        if (err) throw err;
+        //console.table(res);
         init();
     });
 
