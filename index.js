@@ -65,7 +65,13 @@ function viewDept() {
 
 //function to view all roles
 function viewRoles() {
-    const sql = "SELECT * FROM roles;";
+    const sql = `SELECT
+    roles.id AS role_id,
+    roles.salary,
+    title,
+    departments.name AS department_name
+    FROM roles
+    JOIN departments ON roles.department_id = departments.id;`;
     db.query(sql,
     function(err, res) {
         if (err) throw err
@@ -183,6 +189,8 @@ function addEmployee () {
     
     });
     }
+
+
 
 
 init();
