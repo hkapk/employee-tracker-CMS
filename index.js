@@ -197,15 +197,38 @@ function addEmployee () {
 
 //function to update an employee's role
 function updateRole() {
+    // db.query(`SELECT
+    //     employees.first_name, employees.last_name,
+    //     FROM employees
+    //     JOIN roles ON employees.role_id = roles.id;`, function (err, res) {
+            
+    //     })
     const employees = ["Bob", "Joe", "Tom"]
     inquirer.prompt([
         {
-        type: "list",
-        message: "Which employee role would you like to update?",
-        name: "role_update",
-        choices: employees
+        type: "input",
+        message: "What is the employee ID for the employee you like to update?",
+        name: "role_update_id"
+        },
+        {
+        type: "input",
+        message: "What is the new role_id?",
+        name:"new_role_id"
         }
     ])
+    .then(function(input) {
+        const role_update_id = input.role_update_id;
+        const new_role_id = input.new_role_id;
+
+        const sql = `UPDATE employees SET role_id = ${new_role_id}
+                    WHERE employees.id = ${role_update_id}`
+                    db.query(sql, function (err,res) {
+                        if (err) throw err;
+                        console.table("Employee role updated ");
+                        init();
+                    });
+        
+    })
 }
 
 

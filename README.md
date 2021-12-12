@@ -1,5 +1,7 @@
 # employee-tracker-CMS
 
+https://user-images.githubusercontent.com/90150749/145728951-fbf0e758-fd3f-4b79-9dc5-c1ea282057f1.mp4
+
 https://github.com/hkapk/employee-tracker-CMS
 
 ## Project Description:
