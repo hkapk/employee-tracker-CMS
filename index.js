@@ -54,7 +54,10 @@ function init() {
 };
 // function to view departments
 function viewDept() {
-    const sql = "SELECT * FROM departments;";
+    const sql = `SELECT 
+    departments.id AS department_id,
+    departments.name AS department_name
+    FROM departments;`;
     db.query(sql,
     function(err, res) {
         if (err) throw err
@@ -83,7 +86,8 @@ function viewRoles() {
 //function to view all employees
 function viewEmployees () {
     const sql = `SELECT
-    employees.id AS employee_id, employees.first_name, employees.last_name, roles.salary, departments.name AS department_name
+    employees.id AS employee_id, employees.first_name, employees.last_name, roles.salary, departments.name AS department_name,
+    manager_id AS manager_id
     FROM employees
     JOIN roles ON employees.role_id = roles.id
     JOIN departments ON roles.department_id = departments.id ;`;
