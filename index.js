@@ -2,6 +2,7 @@ const inquirer = require ('inquirer');
 const mysql = require ('mysql2');
 const cTable = require('console.table');
 const db = require('./db/connection');
+const { listenerCount } = require('process');
 
 
 function init() {
@@ -194,7 +195,18 @@ function addEmployee () {
     });
     }
 
-
+//function to update an employee's role
+function updateRole() {
+    const employees = ["Bob", "Joe", "Tom"]
+    inquirer.prompt([
+        {
+        type: "list",
+        message: "Which employee role would you like to update?",
+        name: "role_update",
+        choices: employees
+        }
+    ])
+}
 
 
 init();
