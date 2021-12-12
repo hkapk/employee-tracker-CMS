@@ -88,7 +88,7 @@ function viewRoles() {
 function viewEmployees () {
     const sql = `SELECT
     employees.id AS employee_id, employees.first_name, employees.last_name, roles.salary, departments.name AS department_name,
-    manager_id AS manager_id
+    roles.title AS job_title
     FROM employees
     JOIN roles ON employees.role_id = roles.id
     JOIN departments ON roles.department_id = departments.id ;`;
@@ -203,7 +203,7 @@ function updateRole() {
     //     JOIN roles ON employees.role_id = roles.id;`, function (err, res) {
             
     //     })
-    const employees = ["Bob", "Joe", "Tom"]
+    //const employees = ["Bob", "Joe", "Tom"]
     inquirer.prompt([
         {
         type: "input",
