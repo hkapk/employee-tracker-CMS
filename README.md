@@ -35,8 +35,8 @@ install node, inquirer, mysql2, the database is not currently connected to a ser
 ## License:
 
 This application is licensed by:
-[![License](https://img.shields.io/badge/License--blue.svg)](https://opensource.org/licenses/MIT)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 ## Questions?
 
-Checkout github.com/hkapk on GitHub or send an email inquiry to hankkapka@gmail.com.
+Checkout https://www.github.com/hkapk on GitHub or send an email inquiry to hankkapka@gmail.com.
